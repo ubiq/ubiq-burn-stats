@@ -14,7 +14,6 @@ func newRootCmd() *cobra.Command {
 	var gethEndpointHTTP string
 	var gethEndpointWebsocket string
 	var dbPath string
-	var ropsten bool
 	var workerCount int
 
 	rootCmd := &cobra.Command{
@@ -46,7 +45,6 @@ func newRootCmd() *cobra.Command {
 				gethEndpointHTTP,
 				gethEndpointWebsocket,
 				dbPath,
-				ropsten,
 				workerCount,
 			)
 		},
@@ -59,7 +57,6 @@ func newRootCmd() *cobra.Command {
 	rootCmd.Flags().StringVar(&gethEndpointWebsocket, "gubiq-endpoint-websocket", "ws://localhost:8589", "Endpoint to gubiq for websocket")
 	rootCmd.Flags().StringVar(&dbPath, "db-path", "watchtheburn.db", "Path to the SQLite db")
 	rootCmd.Flags().IntVar(&workerCount, "worker-count", 10, "Number of workers to spawn to parallelize http client")
-	rootCmd.Flags().BoolVar(&ropsten, "ropsten", false, "Use ropsten block numbers")
 
 	return rootCmd
 }
@@ -71,7 +68,6 @@ func root(
 	gethEndpointHTTP string,
 	gethEndpointWebsocket string,
 	dbPath string,
-	ropsten bool,
 	workerCount int,
 ) error {
 	hub, err := hub.New(
@@ -80,7 +76,6 @@ func root(
 		gethEndpointHTTP,
 		gethEndpointWebsocket,
 		dbPath,
-		ropsten,
 		workerCount,
 	)
 	if err != nil {

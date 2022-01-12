@@ -63,7 +63,6 @@ type Stats struct {
 func (s *Stats) initialize(
 	gethEndpointHTTP string,
 	dbPath string,
-	ropsten bool,
 	workerCount int,
 ) error {
 	var err error
@@ -73,15 +72,6 @@ func (s *Stats) initialize(
 	s.lastBerlinTimestamp = uint64(1628166812)
 	s.londonBlock = uint64(12_965_000)
 	s.londonTimestamp = uint64(1628166822)
-
-	if ropsten {
-		s.byzantiumBlock = uint64(1_700_000)
-		s.constantinopleBlock = uint64(4_230_000)
-		s.lastBerlinBlock = uint64(10_499_400)
-		s.lastBerlinTimestamp = uint64(1624500042)
-		s.londonBlock = uint64(10_499_401)
-		s.londonTimestamp = uint64(1624500217)
-	}
 
 	log.Infof("Initialize rpcClientHttp '%s'", gethEndpointHTTP)
 

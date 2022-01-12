@@ -55,7 +55,6 @@ func New(
 	gethEndpointHTTP string,
 	gethEndpointWebsocket string,
 	dbPath string,
-	ropsten bool,
 	workerCount int,
 ) (*Hub, error) {
 	upgrader := &websocket.Upgrader{
@@ -90,7 +89,7 @@ func New(
 		usd:          usd,
 	}
 
-	s.initialize(gethEndpointHTTP, dbPath, ropsten, workerCount)
+	s.initialize(gethEndpointHTTP, dbPath, workerCount)
 
 	h.initializeWebSocketHandlers()
 	err := h.initializeGrpcWebSocket(gethEndpointWebsocket)
