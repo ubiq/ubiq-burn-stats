@@ -1,9 +1,9 @@
-module github.com/mohamedmansour/ethereum-burn-stats/analysis
+module github.com/ubiq/ubiq-burn-stats/analysis
 
-go 1.16
+go 1.17
 
 require (
-	github.com/ethereum/go-ethereum v1.10.9 // indirect
+	github.com/ubiq/go-ubiq/v6 v6.0.0
 	github.com/mattn/go-sqlite3 v1.14.8
-	github.com/mohamedmansour/ethereum-burn-stats/daemon v0.0.0-20210929233232-a8ed04012aba // indirect
+	github.com/ubiq/ubiq-burn-stats/daemon v0.0.0-20210929233232-a8ed04012aba // indirect
 )

@@ -72,10 +72,10 @@ function Navigation({ isMobile }: { isMobile: boolean }) {
 
         <NavigationItem style={linkStyle} currentPage={currentPage} path="/about" label="About" activeColor={activeColor} />
 
-        <Link {...linkStyle} _hover={{ textDecoration: "none", color: activeColor }} userSelect="none" target="_blank" href="https://github.com/mohamedmansour/ethereum-burn-stats">Source code</Link>
+        <Link {...linkStyle} _hover={{ textDecoration: "none", color: activeColor }} userSelect="none" target="_blank" href="https://github.com/ubiq/ubiq-burn-stats">Source code</Link>
 
         <Link {...linkStyle} _hover={{ textDecoration: "none", color: activeColor }} userSelect="none" target="_blank" href="https://gitcoin.co/grants/1709/watchtheburncom">
-          <TooltipPlus label="Please help support the server costs, hosting Geth is not cheap 🖤 You can donate through Gitcon Grant, or through website sponsorships." textAlign="center" placement="top">
+          <TooltipPlus label="Please help support the server costs, hosting Gubiq is not cheap 🖤 You can donate through Gitcon Grant, or through website sponsorships." textAlign="center" placement="top">
             <Text>Donate</Text>
           </TooltipPlus>
         </Link>

@@ -39,7 +39,7 @@ export function About() {
 
           <Box>
             <Text variant="brandSecondary">Open Sourced: </Text>
-            <Link href="https://github.com/mohamedmansour/ethereum-burn-stats" target="_blank">
+            <Link href="https://github.com/ubiq/ubiq-burn-stats" target="_blank">
               <HStack>
                 <Icon as={VscGithub} title="Contribute to Ethereum Burn Stats on GitHub" />
                 <Text>ethereum-burn-stats</Text>

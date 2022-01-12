@@ -7,11 +7,11 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common/hexutil"
 	_ "github.com/lib/pq"
 	_ "github.com/mattn/go-sqlite3"
+	"github.com/ubiq/go-ubiq/v6/common/hexutil"
 
-	watchtheburn "github.com/mohamedmansour/ethereum-burn-stats/daemon/sql"
+	watchtheburn "github.com/ubiq/ubiq-burn-stats/daemon/sql"
 )
 
 var (
@@ -26,7 +26,7 @@ var (
 func main() {
 	flag.Parse()
 	appStart := time.Now()
-	
+
 	// Connect to SQLite
 	sqliteDb, err := sql.Open("sqlite3", *sqliteDbPath)
 	if err != nil {
@@ -129,7 +129,7 @@ func main() {
 		rowsAdded++
 
 		// Commit every 1000 rows.
-		if rowsAdded % 1000 == 0 {
+		if rowsAdded%1000 == 0 {
 			fmt.Printf("%d blocks migrated in %vs\n", rowsAdded, time.Since(start).Seconds())
 			err = txn.Commit()
 			if err != nil {
@@ -144,13 +144,13 @@ func main() {
 			start = time.Now()
 		}
 	}
-	
+
 	// Commit the remaining.
 	if rowsAdded == 0 {
 		fmt.Printf("Nothing to migrate, upto date! Latest block at %d.\nCompleted in %vs\n", int(count), time.Since(start).Seconds())
 	} else {
 		fmt.Printf("%d blocks migrated in %vs\n", rowsAdded, time.Since(start).Seconds())
-		fmt.Printf("Total of %d blocks migrated. Ended at block %d.\nCompleted in %vs\n", rowsAdded, rowsAdded + int(count), time.Since(appStart).Seconds())
+		fmt.Printf("Total of %d blocks migrated. Ended at block %d.\nCompleted in %vs\n", rowsAdded, rowsAdded+int(count), time.Since(appStart).Seconds())
 	}
 
 	err = txn.Commit()

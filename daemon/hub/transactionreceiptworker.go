@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/ethereum/go-ethereum/common/hexutil"
+	"github.com/ubiq/go-ubiq/v6/common/hexutil"
 )
 
 type TransactionReceiptWorker struct {

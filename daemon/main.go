@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/mohamedmansour/ethereum-burn-stats/daemon/cmd"
+	"github.com/ubiq/ubiq-burn-stats/daemon/cmd"
 )
 
 func main() {

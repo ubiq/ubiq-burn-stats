@@ -1,4 +1,4 @@
-module github.com/mohamedmansour/ethereum-burn-stats/daemon
+module github.com/ubiq/ubiq-burn-stats/daemon
 
 go 1.16
 

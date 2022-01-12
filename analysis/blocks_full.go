@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/params"
 	_ "github.com/mattn/go-sqlite3"
-	watchtheburn "github.com/mohamedmansour/ethereum-burn-stats/daemon/sql"
+	"github.com/ubiq/go-ubiq/v6/common/hexutil"
+	"github.com/ubiq/go-ubiq/v6/params"
+	watchtheburn "github.com/ubiq/ubiq-burn-stats/daemon/sql"
 )
 
 var (
@@ -17,7 +17,7 @@ var (
 )
 
 type WatchTheBurnBlockStat struct {
-	Number            uint 
+	Number            uint
 	Timestamp         uint64
 	BaseFee           big.Int
 	Burned            big.Int
@@ -85,19 +85,19 @@ const (
 
 type ComplexRecord struct {
 	Total big.Int
-	Min big.Int
-	Max big.Int
+	Min   big.Int
+	Max   big.Int
 }
 
 type RecordStreak struct {
-	StartBlock uint
-	EndBlock uint
-	Burned ComplexRecord
-	Rewards ComplexRecord
-	Tips ComplexRecord
-	BaseFee ComplexRecord
-	PriorityFee ComplexRecord
-	TotalTransactions uint
+	StartBlock             uint
+	EndBlock               uint
+	Burned                 ComplexRecord
+	Rewards                ComplexRecord
+	Tips                   ComplexRecord
+	BaseFee                ComplexRecord
+	PriorityFee            ComplexRecord
+	TotalTransactions      uint
 	TotalType2Transactions uint
 }
 
@@ -106,11 +106,11 @@ func (r *RecordStreak) Count() uint {
 }
 
 type BlocksFull struct {
-	blocksFull map[int][]WatchTheBurnBlockStat
+	blocksFull     map[int][]WatchTheBurnBlockStat
 	currentStreaks map[int]*RecordStreak
-	recordStreaks map[int]RecordStreak
-	totalBlocks int
-	latestBlock uint
+	recordStreaks  map[int]RecordStreak
+	totalBlocks    int
+	latestBlock    uint
 }
 
 func (b *BlocksFull) Initialize(count uint) {
@@ -128,7 +128,7 @@ func (b *BlocksFull) ProcessBlock(block watchtheburn.BlockStats) error {
 	if err != nil {
 		return err
 	}
-	
+
 	b.storePercentage(*blockstats, 90)
 	b.storePercentage(*blockstats, 95)
 	b.storePercentage(*blockstats, 99)
@@ -160,12 +160,12 @@ func (b *BlocksFull) PrintPercentageFull(percentile int) {
 			- %.2f ETH tips (%.2f ETH min, %.2f ETH max, %.2f ETH avg)
 			- %.2f GWEI basefee (%.2f GWEI min, %.2f GWEI max, %.2f GWEI avg)
 			- %.2f GWEI priorityfee (%.2f GWEI min, %.2f GWEI max, %.2f GWEI avg)
-	`,	percentile, 
+	`, percentile,
 		percentageFull, fullCount, b.totalBlocks,
 		consecutiveFull, consecutiveCount, b.totalBlocks,
 		recordStreak.StartBlock, recordStreak.EndBlock,
 		recordStreak.Count(),
-		float64(recordStreak.TotalType2Transactions) / float64(recordStreak.TotalTransactions) * 100, recordStreak.TotalType2Transactions, recordStreak.TotalTransactions,
+		float64(recordStreak.TotalType2Transactions)/float64(recordStreak.TotalTransactions)*100, recordStreak.TotalType2Transactions, recordStreak.TotalTransactions,
 		b.formatEther(&recordStreak.Rewards.Total), b.formatEther(&recordStreak.Rewards.Min), b.formatEther(&recordStreak.Rewards.Max), b.formatAverageEther(&recordStreak.Rewards.Total, recordStreak.Count()),
 		b.formatEther(&recordStreak.Burned.Total), b.formatEther(&recordStreak.Burned.Min), b.formatEther(&recordStreak.Burned.Max), b.formatAverageEther(&recordStreak.Burned.Total, recordStreak.Count()),
 		b.formatEther(&recordStreak.Tips.Total), b.formatEther(&recordStreak.Tips.Min), b.formatEther(&recordStreak.Tips.Max), b.formatAverageEther(&recordStreak.Tips.Total, recordStreak.Count()),
@@ -174,12 +174,12 @@ func (b *BlocksFull) PrintPercentageFull(percentile int) {
 	)
 }
 
-func (b* BlocksFull) formatAverageEther(total *big.Int, count uint) float64 {
-	return  b.formatEther(total) / float64(count)
+func (b *BlocksFull) formatAverageEther(total *big.Int, count uint) float64 {
+	return b.formatEther(total) / float64(count)
 }
 
-func (b* BlocksFull) formatAverageGwei(total *big.Int, count uint) float64 {
-	return  b.formatGwei(total) / float64(count)
+func (b *BlocksFull) formatAverageGwei(total *big.Int, count uint) float64 {
+	return b.formatGwei(total) / float64(count)
 }
 
 func (b *BlocksFull) formatEther(value *big.Int) float64 {
@@ -230,27 +230,27 @@ func (b *BlocksFull) storePercentage(block WatchTheBurnBlockStat, percentile int
 func (b *BlocksFull) updateCurrentStreak(block WatchTheBurnBlockStat, percentile int) {
 	if b.currentStreaks[percentile] == nil {
 		b.currentStreaks[percentile] = &RecordStreak{
-			StartBlock: block.Number,
-			EndBlock: block.Number,
-			BaseFee: b.initializeComplexRecord(block.BaseFee),
-			Burned: b.initializeComplexRecord(block.Burned),
-			PriorityFee: b.initializeComplexRecord(block.PriorityFee),
-			Rewards: b.initializeComplexRecord(block.Rewards),
-			Tips: b.initializeComplexRecord(block.Tips),
-			TotalTransactions: uint(block.Transactions),
+			StartBlock:             block.Number,
+			EndBlock:               block.Number,
+			BaseFee:                b.initializeComplexRecord(block.BaseFee),
+			Burned:                 b.initializeComplexRecord(block.Burned),
+			PriorityFee:            b.initializeComplexRecord(block.PriorityFee),
+			Rewards:                b.initializeComplexRecord(block.Rewards),
+			Tips:                   b.initializeComplexRecord(block.Tips),
+			TotalTransactions:      uint(block.Transactions),
 			TotalType2Transactions: uint(block.Type2Transactions),
 		}
 	} else {
 		currentStreak := b.currentStreaks[percentile]
 		newStreak := &RecordStreak{
-			StartBlock: currentStreak.StartBlock,
-			EndBlock: block.Number,
-			BaseFee: b.updateComplexRecord(currentStreak.BaseFee, block.BaseFee),
-			Burned: b.updateComplexRecord(currentStreak.Burned, block.Burned),
-			PriorityFee: b.updateComplexRecord(currentStreak.PriorityFee, block.PriorityFee),
-			Rewards: b.updateComplexRecord(currentStreak.Rewards, block.Rewards),
-			Tips: b.updateComplexRecord(currentStreak.Tips, block.Tips),
-			TotalTransactions: currentStreak.TotalTransactions + uint(block.Transactions),
+			StartBlock:             currentStreak.StartBlock,
+			EndBlock:               block.Number,
+			BaseFee:                b.updateComplexRecord(currentStreak.BaseFee, block.BaseFee),
+			Burned:                 b.updateComplexRecord(currentStreak.Burned, block.Burned),
+			PriorityFee:            b.updateComplexRecord(currentStreak.PriorityFee, block.PriorityFee),
+			Rewards:                b.updateComplexRecord(currentStreak.Rewards, block.Rewards),
+			Tips:                   b.updateComplexRecord(currentStreak.Tips, block.Tips),
+			TotalTransactions:      currentStreak.TotalTransactions + uint(block.Transactions),
 			TotalType2Transactions: currentStreak.TotalType2Transactions + uint(block.Type2Transactions),
 		}
 		b.currentStreaks[percentile] = newStreak
@@ -260,8 +260,8 @@ func (b *BlocksFull) updateCurrentStreak(block WatchTheBurnBlockStat, percentile
 func (b *BlocksFull) initializeComplexRecord(value big.Int) ComplexRecord {
 	return ComplexRecord{
 		Total: value,
-		Min: value,
-		Max: value,
+		Min:   value,
+		Max:   value,
 	}
 }
 
@@ -270,7 +270,7 @@ func (b *BlocksFull) updateComplexRecord(complex ComplexRecord, value big.Int) C
 	total.Add(total, &complex.Total)
 	total.Add(total, &value)
 	complex.Total = *total
-	
+
 	if complex.Min.Cmp(&value) == 1 {
 		complex.Min = value
 	}
@@ -330,21 +330,21 @@ func (b *BlocksFull) decodeBlockStats(block watchtheburn.BlockStats) (*WatchTheB
 	if gasTarget == 0 {
 		gasUsedPercentage = 0.0
 	} else {
-		gasUsedPercentage = float64(gasUsed) / float64(gasTarget * 2) * 100
+		gasUsedPercentage = float64(gasUsed) / float64(gasTarget*2) * 100
 	}
 
 	return &WatchTheBurnBlockStat{
-		Number: block.Number,
-		BaseFee: *baseFee,
-		Burned: *burned,
-		GasTarget: gasTarget,
-		GasUsed: gasUsed,
-		PriorityFee: *priorityFee,
-		Rewards: *rewards,
-		Tips: *tips,
-		Transactions: transactions,
+		Number:            block.Number,
+		BaseFee:           *baseFee,
+		Burned:            *burned,
+		GasTarget:         gasTarget,
+		GasUsed:           gasUsed,
+		PriorityFee:       *priorityFee,
+		Rewards:           *rewards,
+		Tips:              *tips,
+		Transactions:      transactions,
 		Type2Transactions: type2Transactions,
-		Timestamp: block.Timestamp,
+		Timestamp:         block.Timestamp,
 		GasUsedPercentage: gasUsedPercentage,
 	}, nil
 }

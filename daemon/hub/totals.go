@@ -32,7 +32,6 @@ func (tl *TotalsList) addPeriod(period Totals) {
 	defer tl.mu.Unlock()
 
 	if len(tl.periods) > 0 && tl.periods[0].ID == period.ID {
-		//log.Debugf("period %s replaced", period.ID)
 		tl.periods = tl.periods[1:]
 	}
 

@@ -60,7 +60,6 @@ func (c *RPCClient) CallContext(
 	}
 
 	request.Header.Add("Content-Type", "application/json")
-	//request.Header.Add("Connection", "close")
 	request.Header.Add("X-Custom-Method", method)
 	if blockNumber != "" {
 		request.Header.Add("X-Custom-Block-Number", blockNumber)

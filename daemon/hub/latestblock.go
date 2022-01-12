@@ -23,13 +23,6 @@ func (lb *LatestBlock) getBlockNumber() uint64 {
 	return lb.blockNumber
 }
 
-//func (lb *LatestBlock) lessEqualsLatestBlock(blockNumber *big.Int) bool {
-//	lb.mu.Lock()
-//	defer lb.mu.Unlock()
-//
-//	return lb.blockNumber.Cmp(blockNumber) >= 0
-//}
-
 func (lb *LatestBlock) updateBlockNumber(newBlockNumber uint64) {
 	lb.mu.Lock()
 	defer lb.mu.Unlock()

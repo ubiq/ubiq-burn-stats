@@ -1,6 +1,6 @@
 package hub
 
-import "github.com/mohamedmansour/ethereum-burn-stats/daemon/sql"
+import "github.com/ubiq/ubiq-burn-stats/daemon/sql"
 
 // Block type represents a single ethereum Block.
 type Block struct {

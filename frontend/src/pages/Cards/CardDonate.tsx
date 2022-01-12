@@ -106,7 +106,7 @@ export function CardDonate({ type }: { type: CardDonateType }) {
   return (
     <Card title="Support WatchTheBurn">
       <Box pl={4} pr={4} pb={4}>
-        <Text>It's expensive hosting multiple geth instances on the cloud. Any help would be appreciated:</Text>
+        <Text>It's expensive hosting multiple gubiq instances on the cloud. Any help would be appreciated:</Text>
         <UnorderedList mt={4}>
           <ListItem>Through our <Link href="https://gitcoin.co/grants/1709/watchtheburncom">Gitcoin Grant</Link></ListItem>
           <ListItem>Monthly sponsorships, in a card like this. Contact us on <Link href="https://twitter.com/mohamedmansour">Twitter</Link></ListItem>

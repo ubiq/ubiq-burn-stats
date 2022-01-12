@@ -13,9 +13,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/mohamedmansour/ethereum-burn-stats/daemon/sql"
+	"github.com/ubiq/go-ubiq/v6/common/hexutil"
+	"github.com/ubiq/go-ubiq/v6/core/types"
+	"github.com/ubiq/ubiq-burn-stats/daemon/sql"
 )
 
 type statsMap struct {
@@ -194,14 +194,14 @@ func (s *Stats) initWaitForSyncingFalse() error {
 				return fmt.Errorf("couldn't decode eth_syncing HighestBlock: %v", err)
 			}
 
-			log.Infof("init: geth is syncing: %d/%d", current, highest)
+			log.Infof("init: gubiq is syncing: %d/%d", current, highest)
 		}
 		if ethSyncing {
 			time.Sleep(5 * time.Second)
 		}
 	}
 
-	log.Infof("init: geth syncing finished")
+	log.Infof("init: gubiq syncing finished")
 	s.ethSyncing = nil
 
 	return nil

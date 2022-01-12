@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/mohamedmansour/ethereum-burn-stats/daemon/hub"
 	"github.com/spf13/cobra"
+	"github.com/ubiq/ubiq-burn-stats/daemon/hub"
 )
 
 func newRootCmd() *cobra.Command {
@@ -19,24 +19,24 @@ func newRootCmd() *cobra.Command {
 
 	rootCmd := &cobra.Command{
 		// TODO:
-		Use: "ethereum-burn-stats",
+		Use: "ubiq-burn-stats",
 		// TODO:
 		Short: "short",
 		Long:  `long`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if gethEndpointHTTP == "" {
 				cmd.Help()
-				return fmt.Errorf("--geth-endpoint-http is required")
+				return fmt.Errorf("--gubiq-endpoint-http is required")
 			}
 
 			if gethEndpointWebsocket == "" {
 				cmd.Help()
-				return fmt.Errorf("--geth-endpoint-websocket is required")
+				return fmt.Errorf("--gubiq-endpoint-websocket is required")
 			}
 
 			if dbPath == "" {
 				cmd.Help()
-				return fmt.Errorf("--geth-endpoint-websocket is required")
+				return fmt.Errorf("--gubiq-endpoint-websocket is required")
 			}
 
 			return root(
@@ -55,8 +55,8 @@ func newRootCmd() *cobra.Command {
 	rootCmd.Flags().StringVar(&addr, "addr", ":8080", "HTTP service address")
 	rootCmd.Flags().BoolVar(&debug, "debug", false, "enable debug logs")
 	rootCmd.Flags().BoolVar(&development, "development", true, "enable for development mode")
-	rootCmd.Flags().StringVar(&gethEndpointHTTP, "geth-endpoint-http", "http://localhost:8545", "Endpoint to geth for http")
-	rootCmd.Flags().StringVar(&gethEndpointWebsocket, "geth-endpoint-websocket", "ws://localhost:8546", "Endpoint to geth for websocket")
+	rootCmd.Flags().StringVar(&gethEndpointHTTP, "gubiq-endpoint-http", "http://localhost:8588", "Endpoint to gubiq for http")
+	rootCmd.Flags().StringVar(&gethEndpointWebsocket, "gubiq-endpoint-websocket", "ws://localhost:8589", "Endpoint to gubiq for websocket")
 	rootCmd.Flags().StringVar(&dbPath, "db-path", "watchtheburn.db", "Path to the SQLite db")
 	rootCmd.Flags().IntVar(&workerCount, "worker-count", 10, "Number of workers to spawn to parallelize http client")
 	rootCmd.Flags().BoolVar(&ropsten, "ropsten", false, "Use ropsten block numbers")

@@ -3,7 +3,7 @@ package hub
 import (
 	"sync"
 
-	"github.com/mohamedmansour/ethereum-burn-stats/daemon/sql"
+	"github.com/ubiq/ubiq-burn-stats/daemon/sql"
 )
 
 // LatestBlocks defines a mutexed list of latest blocks

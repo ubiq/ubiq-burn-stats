@@ -8,12 +8,12 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/types"
-	gethRPC "github.com/ethereum/go-ethereum/rpc"
 	"github.com/gorilla/websocket"
-	"github.com/mohamedmansour/ethereum-burn-stats/daemon/version"
 	"github.com/sirupsen/logrus"
+	"github.com/ubiq/go-ubiq/v6/common/hexutil"
+	"github.com/ubiq/go-ubiq/v6/core/types"
+	gethRPC "github.com/ubiq/go-ubiq/v6/rpc"
+	"github.com/ubiq/ubiq-burn-stats/daemon/version"
 )
 
 var log = logrus.StandardLogger()
@@ -59,8 +59,8 @@ func New(
 	workerCount int,
 ) (*Hub, error) {
 	upgrader := &websocket.Upgrader{
-		ReadBufferSize:    1024,
-		WriteBufferSize:   1024,
+		ReadBufferSize:  1024,
+		WriteBufferSize: 1024,
 	}
 
 	if debug {
@@ -107,7 +107,7 @@ func New(
 func (h *Hub) initializeWebSocketHandlers() {
 	h.handlers = map[string]func(c *Client, message jsonrpcMessage) (json.RawMessage, error){
 
-		// internal custom geth commands.
+		// internal custom gubiq commands.
 		"internal_getInitialData":           h.handleInitialData(),
 		"internal_getInitialAggregatesData": h.handleInitialAggregatesData(),
 		"eth_syncing":                       h.ethSyncing(),
@@ -143,7 +143,7 @@ func (h *Hub) initializeGrpcWebSocket(gethEndpointWebsocket string) error {
 				time.Sleep(12 * time.Second)
 				error_chan <- true
 				return
-				
+
 			case header := <-headers:
 				// clientsCount is quantity of active subscriptions/users
 				clientsCount := len(h.clients)
@@ -174,7 +174,7 @@ func (h *Hub) initializeGrpcWebSocket(gethEndpointWebsocket string) error {
 					log.Errorf("getTotals(%d): %v", blockNumber, err)
 					continue
 				}
-				
+
 				blockTime, err := h.s.getBlockTimestamp(blockNumber)
 				if err != nil {
 					log.Errorf("getBlockTimestamp(%d): %v", blockNumber, err)
@@ -244,10 +244,10 @@ func (h *Hub) initializeGrpcWebSocket(gethEndpointWebsocket string) error {
 
 	go func() {
 		<-error_chan
-		log.Errorln("Reconnecting to Geth WS")
+		log.Errorln("Reconnecting to Gubiq WS")
 		h.initializeGrpcWebSocket(gethEndpointWebsocket)
 	}()
-	
+
 	return nil
 }
 
