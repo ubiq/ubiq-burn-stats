@@ -41,8 +41,6 @@ type Stats struct {
 	latestBlock  *LatestBlock
 	latestBlocks *LatestBlocks
 
-	byzantiumBlock      uint64
-	constantinopleBlock uint64
 	lastBerlinBlock     uint64
 	lastBerlinTimestamp uint64
 	londonBlock         uint64
@@ -66,9 +64,7 @@ func (s *Stats) initialize(
 	workerCount int,
 ) error {
 	var err error
-	s.byzantiumBlock = uint64(1_075_090)      // Refered to in getBaseReward
-	s.constantinopleBlock = uint64(1_075_090) // Refered to in getBaseReward
-	s.lastBerlinBlock = uint64(1_791_792)     // For our purposes, this is actually the block prior to London
+	s.lastBerlinBlock = uint64(1_791_792) // For our purposes, this is actually the block prior to London
 	s.lastBerlinTimestamp = uint64(1641779710)
 	s.londonBlock = uint64(1_791_793)
 	s.londonTimestamp = uint64(1641779813)
@@ -1342,19 +1338,28 @@ func getPercentileSortedUint64(values []uint64, perc int) uint64 {
 
 func (s *Stats) getBaseReward(blockNum uint64) big.Int {
 	baseReward := big.NewInt(0)
-	if blockNum >= s.constantinopleBlock {
-		constantinopleReward := big.NewInt(2000000000000000000)
-		baseReward.Add(baseReward, constantinopleReward)
+	if blockNum >= s.londonBlock {
+		baseReward.Add(baseReward, big.NewInt(1500000000000000000))
+		return *baseReward
+	}
+	if blockNum >= uint64(1433454) {
+		baseReward.Add(baseReward, big.NewInt(4000000000000000000))
+		return *baseReward
+	}
+	if blockNum >= uint64(1075090) {
+		baseReward.Add(baseReward, big.NewInt(5000000000000000000))
+		return *baseReward
+	}
+	if blockNum >= uint64(716727) {
+		baseReward.Add(baseReward, big.NewInt(6000000000000000000))
+		return *baseReward
+	}
+	if blockNum >= uint64(358363) {
+		baseReward.Add(baseReward, big.NewInt(7000000000000000000))
 		return *baseReward
 	}
 
-	if blockNum >= s.byzantiumBlock {
-		byzantiumReward := big.NewInt(3000000000000000000)
-		baseReward.Add(baseReward, byzantiumReward)
-		return *baseReward
-	}
-
-	genesisReward := big.NewInt(5000000000000000000)
+	genesisReward := big.NewInt(8000000000000000000)
 	baseReward.Add(baseReward, genesisReward)
 	return *baseReward
 }
