@@ -66,12 +66,12 @@ func (s *Stats) initialize(
 	workerCount int,
 ) error {
 	var err error
-	s.byzantiumBlock = uint64(4_370_000)
-	s.constantinopleBlock = uint64(7_280_000)
-	s.lastBerlinBlock = uint64(12_964_999)
-	s.lastBerlinTimestamp = uint64(1628166812)
-	s.londonBlock = uint64(12_965_000)
-	s.londonTimestamp = uint64(1628166822)
+	s.byzantiumBlock = uint64(1_075_090)      // Refered to in getBaseReward
+	s.constantinopleBlock = uint64(1_075_090) // Refered to in getBaseReward
+	s.lastBerlinBlock = uint64(1_791_792)     // For our purposes, this is actually the block prior to London
+	s.lastBerlinTimestamp = uint64(1641779710)
+	s.londonBlock = uint64(1_791_793)
+	s.londonTimestamp = uint64(1641779813)
 
 	log.Infof("Initialize rpcClientHttp '%s'", gethEndpointHTTP)
 
@@ -1205,8 +1205,8 @@ func (s *Stats) updateBlockStats(blockNumber uint64, updateCache bool) (sql.Bloc
 		gasTarget.Div(gasTarget, big.NewInt(2))
 	}
 
-	// initial london block is 1Gwei baseFee
-	baseFee := big.NewInt(1_000_000_000)
+	// initial london block is 80Gwei baseFee
+	baseFee := big.NewInt(80_000_000_000)
 
 	if block.BaseFeePerGas != "" {
 		baseFee, err = hexutil.DecodeBig(block.BaseFeePerGas)
