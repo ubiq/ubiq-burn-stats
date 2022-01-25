@@ -22,9 +22,7 @@ import { useMobileDetector } from "../contexts/MobileDetectorContext";
 import { CardLatestStats } from "../pages/Cards/CardLatestStats";
 import { CardTotals } from "../pages/Cards/CardTotals";
 import { useEffect, useRef, useState } from "react";
-import { TooltipPlus } from "../atoms/TooltipPlus";
 import { VscMenu } from "react-icons/vsc";
-import { CardDonate, CardDonateType } from "../pages/Cards/CardDonate";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -73,12 +71,6 @@ function Navigation({ isMobile }: { isMobile: boolean }) {
         <NavigationItem style={linkStyle} currentPage={currentPage} path="/about" label="About" activeColor={activeColor} />
 
         <Link {...linkStyle} _hover={{ textDecoration: "none", color: activeColor }} userSelect="none" target="_blank" href="https://github.com/ubiq/ubiq-burn-stats">Source code</Link>
-
-        <Link {...linkStyle} _hover={{ textDecoration: "none", color: activeColor }} userSelect="none" target="_blank" href="https://gitcoin.co/grants/1709/watchtheburncom">
-          <TooltipPlus label="Please help support the server costs, hosting Gubiq is not cheap 🖤 You can donate through Gitcon Grant, or through website sponsorships." textAlign="center" placement="top">
-            <Text>Donate</Text>
-          </TooltipPlus>
-        </Link>
     </Flex>
   )
 }
@@ -112,10 +104,8 @@ function Sidebar({ isMobile }: { isMobile: boolean }) {
       gridGap={layoutConfig.gap}
       mb={layoutConfig.gap}
       w={isMobile ? undefined : layoutConfig.sidebarWidth}>
-      <CardDonate type={CardDonateType.TopSideBar} />
       <CardTotals />
       <CardLatestStats />
-      {!isMobile && <CardDonate type={CardDonateType.BottomSideBar} />}
     </Flex>
   )
 }
@@ -196,7 +186,6 @@ export function Layout(props: LayoutProps) {
         {showSideBar && <Sidebar isMobile={isMobile} /> }
         <Flex flex={1} direction="column" ml={isMobile ? 0 : layoutConfig.gap} mb={layoutConfig.gap} gridGap={layoutConfig.gap}>
           {props.children}
-          {isMobile && showSideBar && <CardDonate type={CardDonateType.BottomSideBar} />}
         </Flex>
       </Flex>
     </Flex>

@@ -11,28 +11,10 @@ export function About() {
         <Flex direction={{ base: "column", md: "column", lg: "row" }} gridGap={{ base: 4, md: 4, lg: 8 }} >
           <Box>
             <Text variant="brandSecondary">Team: </Text>
-            <Link href="https://twitter.com/mohamedmansour">
+            <Link href="https://twitter.com/ubiqsmart">
               <HStack>
-                <Icon as={VscTwitter} title="Follow Mohamed Mansour on Twitter" />
-                <Text>@mohamedmansour</Text>
-              </HStack>
-            </Link>
-            <Link href="https://github.com/stevengcook">
-              <HStack>
-                <Icon as={VscGithub} title="Follow Steve Cook on GitHub" />
-                <Text>@stevengcook</Text>
-              </HStack>
-            </Link>
-            <Link href="https://twitter.com/erensong" target="_blank">
-              <HStack>
-                <Icon as={VscTwitter} title="Follow Eren Song on Twitter" />
-                <Text>@erensong</Text>
-              </HStack>
-            </Link>
-            <Link href="https://twitter.com/vdWijden" target="_blank">
-              <HStack>
-                <Icon as={VscTwitter} title="Follow Marius Van Der Wijden on Twitter" />
-                <Text>@vdWijden</Text>
+                <Icon as={VscTwitter} title="Follow Ubiq on Twitter" />
+                <Text>@ubiqsmart</Text>
               </HStack>
             </Link>
           </Box>
@@ -41,8 +23,8 @@ export function About() {
             <Text variant="brandSecondary">Open Sourced: </Text>
             <Link href="https://github.com/ubiq/ubiq-burn-stats" target="_blank">
               <HStack>
-                <Icon as={VscGithub} title="Contribute to Ethereum Burn Stats on GitHub" />
-                <Text>ethereum-burn-stats</Text>
+                <Icon as={VscGithub} title="Contribute to Ubiq Burn Stats on GitHub" />
+                <Text>ubiq-burn-stats</Text>
               </HStack>
             </Link>
           </Box>
@@ -54,18 +36,6 @@ export function About() {
         </Flex>
       </Card>
 
-      <Card title="History">
-        <Text>
-          In the <Link href="https://github.com/ethereum-cdap/cohort-zero" target="_blank">Core Developer Apprenticeship Program for the Ethereum
-            Foundation</Link>, a new project idea was posted by <Link href="https://twitter.com/vdWijden" target="_blank">@vdWijden</Link> for {" "}
-          <Link href="https://github.com/ethereum-cdap/cohort-zero/issues/51" target="_blank">Issue #51</Link> to create an EIP-1559 burn website.
-        </Text>
-        <Text>
-          <Link href="https://twitter.com/mohamedmansour">Mohamed Mansour</Link> jumped in, and been adding features ever since. It went through many iterations
-          with the help of the community to be in the state it is today!
-        </Text>
-      </Card>
-
       <Card title="About">
         <Text>
           Ethereum <Link href="https://eips.ethereum.org/EIPS/eip-1559" target="_blank">EIP-1559</Link> is an improvement proposal that
@@ -73,7 +43,6 @@ export function About() {
           fees and replaced it with the base fee model where the fee is changed dynamically based on network activity. The base fee is
           burned <LogoIcon /> and not given to the miners.
         </Text>
-        <Text>It was successfully launched on August 4th, 2021.</Text>
         <Text>This website showcases how much has been burned among other neat stats. For more information, Vitalik Buterin {" "}
           <Link href="https://notes.ethereum.org/@vbuterin/eip-1559-faq" target="_blank">wrote a great blog post</Link> explaining
           what it is in detail.
