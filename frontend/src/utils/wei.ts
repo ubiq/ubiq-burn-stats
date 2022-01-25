@@ -6,7 +6,7 @@ const MinBoundGwei = utils.parseUnits("0.00001", "gwei");
 
 interface AutoFormatType {
   value: string
-  currency: 'ETH' | 'GWEI' | 'WEI' | ''
+  currency: 'UBQ' | 'GWEI' | 'WEI' | ''
 }
 
 export function autoFormatBigNumber(
@@ -19,7 +19,7 @@ export function autoFormatBigNumber(
   }
 
   if (number.gt(MinBoundEther)) {
-    formatted = { value: utils.formatUnits(number, 'ether'), currency: 'ETH'};
+    formatted = { value: utils.formatUnits(number, 'ether'), currency: 'UBQ'};
   } else if (number.lt(MinBoundGwei)) {
     formatted = { value: utils.formatUnits(number, 'wei'), currency: 'WEI'};
   } else {

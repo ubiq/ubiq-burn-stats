@@ -192,14 +192,14 @@ function LiveChart(props: BaseFeeChartProps) {
       case "issuance": {
         const realNumber = Number(value);
         if (isZero(realNumber)) {
-          return "ETH"
+          return "UBQ"
         }
         return value
       }
       case "tips": {
         const realNumber = Number(value);
         if (isZero(realNumber)) {
-          return "ETH"
+          return "UBQ"
         }
         return value
       }

@@ -54,7 +54,7 @@ export function BigNumberFormat(props: BigNumberFormatProps) {
 
   let maximumFractionDigits = 0;
   if (props.maximumFractionDigits) maximumFractionDigits = props.maximumFractionDigits;
-  else if (currency === 'ETH') maximumFractionDigits = 4;
+  else if (currency === 'UBQ') maximumFractionDigits = 4;
   else if (currency === 'USD') maximumFractionDigits = 2;
   if (maximumFractionDigits === -1) maximumFractionDigits = 0;
 

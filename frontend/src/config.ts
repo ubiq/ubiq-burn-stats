@@ -119,10 +119,10 @@ export const defaultSettings: { [key: string]: DefaultSettingValue } =
 
 export const Tooltips = {
   rewards: "Rewards is newly minted ethereum: block reward + uncle rewards + uncle inclusion rewards.",
-  burned: "Burned is the amount of ETH removed from circulation: gas used x base fee.",
+  burned: "Burned is the amount of UBQ removed from circulation: gas used x base fee.",
   tips: "Tips is the gratuity on top of the basefee that each transaction can optionally have.",
-  netIssuance: "Net Issuance the amount of new ETH coming into circulation: burned - rewards.",
-  netReduction: "Net Reduction explains how much ETH issuance was reduced after EIP-1559, when this reaches above 100%, it means we are burning more than issuing. Ultra sound money!",
+  netIssuance: "Net Issuance the amount of new UBQ coming into circulation: burned - rewards.",
+  netReduction: "Net Reduction explains how much UBQ issuance was reduced after EIP-1559, when this reaches above 100%, it means we are burning more than issuing. Ultra sound money!",
   transactions: "Total Transactions in this block (% type 2).",
   baseFee: "Base Fee is the algorithmically determined price you pay per unit of gas for a transaction. GasQuantity * baseFee is burned.",
   baseFeeInsights: "Base Fee is the algorithmically determined price you pay per unit of gas for a transaction. This shows the minimum, median, and 90th percentile baseFee for all blocks in period. WHen hovering, it will additionally show the maximum base fee.",
