@@ -12,7 +12,7 @@ const CustomTooltip = (props: TooltipProps<string, string>) => {
     const payload = props.payload[0] as any
     const item = {
       timestamp: payload.payload.timestamp,
-      value: utils.commify(payload.value) + (payload.dataKey === "baseFee" ? " GWEI" : " UBQ"),
+      value: payload.value + (payload.dataKey === "baseFee" ? " GWEI" : " UBQ"),
       name: capitalizeFirstLetter(payload.name),
       tips: utils.commify(payload.payload.tips) + ' UBQ',
     }
