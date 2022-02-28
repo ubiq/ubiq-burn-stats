@@ -2,7 +2,6 @@ import { Text, HStack, VStack, Heading, ListItem, UnorderedList } from "@chakra-
 import { useEffect, useState } from "react";
 import { useBlockExplorer } from "../../contexts/BlockExplorerContext";
 import { Card } from "../../atoms/Card";
-import { OneEther } from "../../utils/number";
 import { LogoIcon } from "../../atoms/LogoIcon";
 import { BigNumberProps, BigNumberText } from "../../organisms/BigNumberText";
 
@@ -52,10 +51,6 @@ export function CardLatestStats() {
         <HStack w="100%">
           <Text flex={1} fontWeight="medium">Priority Fee</Text>
           <BigNumberText number={details.currentPriorityFee} {...bigNumberStyle} />
-        </HStack>
-        <HStack w="100%">
-          <Text flex={1} fontWeight="medium">Ethereum Price</Text>
-          <BigNumberText number={OneEther} usdConversion={details.usdPrice} fontSize={16} maximumFractionDigits={-1} {...bigNumberStyle} />
         </HStack>
         <HStack w="100%">
           <HStack flex={1}><Text fontWeight="medium">Watching the Burn</Text> <LogoIcon /></HStack>

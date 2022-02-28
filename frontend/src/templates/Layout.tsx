@@ -69,8 +69,6 @@ function Navigation({ isMobile }: { isMobile: boolean }) {
         <NavigationItem style={linkStyle} currentPage={currentPage} path="/insights" label="Insights" activeColor={activeColor} />
 
         <NavigationItem style={linkStyle} currentPage={currentPage} path="/about" label="About" activeColor={activeColor} />
-
-        <Link {...linkStyle} _hover={{ textDecoration: "none", color: activeColor }} userSelect="none" target="_blank" href="https://github.com/ubiq/ubiq-burn-stats">Source code</Link>
     </Flex>
   )
 }
