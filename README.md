@@ -1,9 +1,8 @@
 # Watch the Burn 🔥
-When EIP-1559 gets deployed, ETH will be burned in every block if transactions exist. This website will show you how much ETH got burned in total and per block.
 
-If you have a local Ubiq (we use gubiq but you can use any ETH client) instance, you can update `REACT_APP_WEB3_URL` in  `.env.production.local` to your local ETH instance and run this offline! The instructions below show how to deploy it to a remote website under nginx.
+With EIP-1559 deployed, UBQ will be burned in every block if transactions exist. This website will show you how much UBQ got burned in total and per block.
 
-[![Frontend CI/CD](https://github.com/ubiq/ubiq-burn-stats/actions/workflows/frontend-azure-static-web-apps.yml/badge.svg?branch=main)](https://github.com/ubiq/ubiq-burn-stats/actions/workflows/frontend-azure-static-web-apps.yml) [![Daemon CI/CD](https://github.com/ubiq/ubiq-burn-stats/actions/workflows/daemon-linode.yml/badge.svg?branch=main)](https://github.com/ubiq/ubiq-burn-stats/actions/workflows/daemon-linode.yml)
+If you have a local Ubiq (we use gubiq but you can use any UBQ client) instance, you can update `REACT_APP_WEB3_URL` in  `.env.production.local` to your local UBQ instance and run this offline! The instructions below show how to deploy it to a remote website under nginx.
 
 ## Setup dev environment ⚙
 
@@ -32,9 +31,8 @@ Setting up the environment requires a gubiq instance, daemon gubiq proxy, and re
    
 1. Run the docker instance against your gubiq.
    ```
-   docker run -d --name=gubiq-proxy --restart=on-failure:3 --net=host -v /data/gubiq-proxy:/data gubiq-proxy --addr=:8080 --gubiq-endpoint-http=http://localhost:8588 --gubiq-endpoint-websocket=ws://localhost:8589 --db-path=/data/mainnet.db --development
+   docker run -d --name=gubiq-proxy --restart=on-failure:3 --net=host -v /data/gubiq-proxy:/data gubiq-proxy --addr=:8080 --gubiq-endpoint-http=http://localhost:8588 --gubiq-endpoint-websocket=ws://localhost:8589 --db-path=/data/mainnet.db --development false
    ```
-   If you include `--initializedb` it will start initializing the database since EIP-London, will take time. If you take it out, then it basically just starts at the current head.
    
 ### Optional: Varnish cache to cache all Gubiq RPC calls
 
