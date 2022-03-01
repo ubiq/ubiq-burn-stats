@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { defaultNetwork } from '../config';
-import { getNetworkFromSubdomain } from '../utils/subdomain';
 import { Loader } from '../organisms/Loader';
 import { EthereumApi, EthereumSyncing } from '../libs/ethereum';
 
@@ -30,7 +29,7 @@ const EthereumProvider = ({
     if (!url)
       return;
 
-    const network = getNetworkFromSubdomain() || defaultNetwork
+    const network = defaultNetwork
     const ethereum = new EthereumApi(network, url, maxReconnectionAttempts)
     setMessage(`connecting to ${network.key}, please wait`)
 

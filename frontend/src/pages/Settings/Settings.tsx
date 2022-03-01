@@ -21,7 +21,6 @@ import { useEthereum } from "../../contexts/EthereumContext";
 import { useSettings } from "../../contexts/SettingsContext";
 import { layoutConfig } from "../../layoutConfig";
 import { debounce } from "../../utils/debounce";
-import { navigateToSubdomain } from "../../utils/subdomain";
 
 export function Settings() {
   const { eth } = useEthereum()
@@ -44,9 +43,6 @@ export function Settings() {
     []
   );
 
-  const changeNetwork = (network: string) => {
-    navigateToSubdomain(network)
-  }
 
   return (
     <Flex flex="1" direction="column" m={layoutConfig.gap} gridGap={layoutConfig.gap}>
@@ -62,11 +58,10 @@ export function Settings() {
       </Breadcrumb>
       <Box w="100%">
         <Heading size="sm">
-          Ethereum Network
+          Ubiq Network
         </Heading>
         <Card mt="2">
           <RadioGroup
-            onChange={changeNetwork}
             defaultValue={eth?.connectedNetwork.key}
             ref={firstFieldRef}
           >
