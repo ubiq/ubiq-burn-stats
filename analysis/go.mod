@@ -1,11 +1,11 @@
 module github.com/ubiq/ubiq-burn-stats/analysis
 
-go 1.17
+go 1.18
 
 require (
-	github.com/mattn/go-sqlite3 v1.14.8
-	github.com/ubiq/go-ubiq/v6 v6.0.0
-	github.com/ubiq/ubiq-burn-stats/daemon v0.0.0-20210929233232-a8ed04012aba
+	github.com/mattn/go-sqlite3 v1.14.13
+	github.com/ubiq/go-ubiq/v7 v7.0.0
+	github.com/ubiq/ubiq-burn-stats/daemon v0.0.0-20220610061746-8b15b18aa372
 )
 
 require (

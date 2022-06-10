@@ -9,7 +9,7 @@ import (
 
 	_ "github.com/lib/pq"
 	_ "github.com/mattn/go-sqlite3"
-	"github.com/ubiq/go-ubiq/v6/common/hexutil"
+	"github.com/ubiq/go-ubiq/v7/common/hexutil"
 
 	watchtheburn "github.com/ubiq/ubiq-burn-stats/daemon/sql"
 )
