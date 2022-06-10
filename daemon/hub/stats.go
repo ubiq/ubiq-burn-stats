@@ -13,8 +13,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ubiq/go-ubiq/v6/common/hexutil"
-	"github.com/ubiq/go-ubiq/v6/core/types"
+	"github.com/ubiq/go-ubiq/v7/common/hexutil"
+	"github.com/ubiq/go-ubiq/v7/core/types"
 	"github.com/ubiq/ubiq-burn-stats/daemon/sql"
 )
 

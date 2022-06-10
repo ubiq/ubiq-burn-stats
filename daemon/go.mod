@@ -1,12 +1,12 @@
 module github.com/ubiq/ubiq-burn-stats/daemon
 
-go 1.17
+go 1.18
 
 require (
 	github.com/gorilla/websocket v1.4.2
 	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/cobra v1.2.1
-	github.com/ubiq/go-ubiq/v6 v6.0.0
+	github.com/ubiq/go-ubiq/v7 v7.0.0
 	gorm.io/driver/sqlite v1.1.4
 	gorm.io/gorm v1.21.12
 )

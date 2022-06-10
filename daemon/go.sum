@@ -484,8 +484,8 @@ github.com/tklauser/numcpus v0.2.2/go.mod h1:x3qojaO3uyYt0i56EW/VUYs7uBvdl2fkfZF
 github.com/tyler-smith/go-bip39 v1.0.1-0.20181017060643-dbb3b84ba2ef/go.mod h1:sJ5fKU0s6JVwZjjcUEX2zFOnvq0ASQ2K9Zr6cf67kNs=
 github.com/uber/jaeger-client-go v2.28.0+incompatible/go.mod h1:WVhlPFC8FDjOFMMWRy2pZqQJSXxYSwNYOkTr/Z6d3Kk=
 github.com/uber/jaeger-lib v2.4.1+incompatible/go.mod h1:ComeNDZlWwrWnDv8aPp0Ba6+uUTzImX/AauajbLI56U=
-github.com/ubiq/go-ubiq/v6 v6.0.0 h1:ZfkuMHoTaOK2cR07yAczmHIIHC2nRGjR12pU67maPjw=
-github.com/ubiq/go-ubiq/v6 v6.0.0/go.mod h1:BITZ90ZXKE7k7bWzUg9Sb0k3wiC40MUPlDURRKWTqTE=
+github.com/ubiq/go-ubiq/v7 v7.0.0 h1:6YBGVJpP4IKTY8f/C8LvUqUJfPxCqvXM9ymX9msl3mI=
+github.com/ubiq/go-ubiq/v7 v7.0.0/go.mod h1:kSM/1l0zX/JTVH2gy6PkUb2ySr2tBkFJABDRqgAnb54=
 github.com/urfave/cli/v2 v2.3.0/go.mod h1:LJmUH05zAU44vOAcrfzZQKsZbVcdbOG8rtL3/XcUArI=
 github.com/valyala/bytebufferpool v1.0.0/go.mod h1:6bBcMArwyJ5K/AmCkWv1jt77kVWyCJ6HpOuEn7z0Csc=
 github.com/valyala/fasttemplate v1.0.1/go.mod h1:UQGH1tvbgY+Nz5t2n7tXsz52dQxojPUpymEIMZ47gx8=

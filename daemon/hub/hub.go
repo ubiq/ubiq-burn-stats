@@ -10,9 +10,9 @@ import (
 
 	"github.com/gorilla/websocket"
 	"github.com/sirupsen/logrus"
-	"github.com/ubiq/go-ubiq/v6/common/hexutil"
-	"github.com/ubiq/go-ubiq/v6/core/types"
-	gethRPC "github.com/ubiq/go-ubiq/v6/rpc"
+	"github.com/ubiq/go-ubiq/v7/common/hexutil"
+	"github.com/ubiq/go-ubiq/v7/core/types"
+	gethRPC "github.com/ubiq/go-ubiq/v7/rpc"
 	"github.com/ubiq/ubiq-burn-stats/daemon/version"
 )
 

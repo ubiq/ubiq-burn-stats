@@ -2,7 +2,7 @@ package sql
 
 import (
 
-	//"github.com/ubiq/go-ubiq/v6/core/types"
+	//"github.com/ubiq/go-ubiq/v7/core/types"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
